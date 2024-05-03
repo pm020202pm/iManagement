@@ -1,5 +1,5 @@
-import DashboardStats from "../DashboardStats";
-import ItemList from "../ItemList";
+import DashboardStats from "../components/DashboardStats";
+import ItemList from "../components/ItemList";
 
 const InventoryTab = () => {
     return (
