@@ -1,13 +1,28 @@
 .App {
   text-align: center;
+  align-items: left;
 }
 
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  table-layout: fixed;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 10px;
+}
+.add-button {
+  background-color: #1a9960;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.header .heading {
+  font-size: 35px;
+  font-weight: bold;
 }
 
 th {
@@ -38,3 +53,194 @@ td {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.days-text {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 10px;
+
+}
+.days-text .label1 {
+  width: 100px;
+  color: rgb(179, 172, 172);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.days-text .label2 {
+  width: 100px;
+  color: rgb(231, 231, 231);
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.days-text .label3 {
+  color: rgb(238, 234, 234);
+  font-weight: 700;
+  font-size: 12px;
+  background-color: rgb(212, 30, 30);
+  border-radius: 8px;
+  padding: 5px;
+  margin-top: 8px;
+}
+
+.app-box {
+  display: inline-flex;
+  align-items: center;
+  height: 100px;
+  width: 100%;  
+  background-color: #252c4c;
+  opacity: 0.8;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.app-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #8f8888;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.app-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.app-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1;
+}
+
+.app-count {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.app-label {
+  font-size: 14px;
+}
+
+.dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #120227;
+  color: #ffffff;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.vline {
+  width: 1px;
+  height: 50px;
+  background-color: #ccc;
+  margin: 0 20px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #120227;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.card .col1{
+  width: 20%;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  background-color: #252c4c;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.card .col1 .text1{
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card .col1 .text2{
+  max-lines: 2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: #c8c5c5;
+}
+
+.card .col2{
+  width: 20%;
+  height: 54px;
+  text-align: left;
+  /* background-color: #0f173a; */
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.card .col2 .text1{
+  font-size: 16px;
+  color: #ebeaea;
+}
+
+.card .col4 {
+  width: 20%;
+  height: 54px;
+  text-align: left;
+  /* background-color: #0f173a; */
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.card .col4 .text1{
+  font-size: 14px;
+  color: #bdb9b9;
+  font-weight: 700;
+}
+.card .col4 .text2{
+  font-size: 18px;
+  color: #74f4d6;
+  font-weight: 500;
+}
+
+.card .col5{
+  width: 20%;
+  height: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.card .col5 .text1{
+  font-size: 14px;
+  color: #bdb9b9;
+  font-weight: 700;
+}
+
+.card .col5 .text2{
+  max-lines: 2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: #ebe7e7;
+}
+

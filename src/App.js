@@ -1,6 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import CustomNav from './components/navbar/CustomNav.jsx';
+import InventoryTab from './Tabs/InventoryTab';
 
 function App() {
 
