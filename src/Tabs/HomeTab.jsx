@@ -1,8 +1,13 @@
+import DashboardStats from "../components/DashboardStats";
+
 const HomeTab = () => {
     return (
-        <div>
-            <h1>Home</h1>
+    <div>
+        <div className='header'>
+            <div className='heading'>Dashboard</div>
         </div>
+        <DashboardStats />
+    </div>
     );
 };
 export default HomeTab;
