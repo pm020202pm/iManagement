@@ -1,8 +1,8 @@
 import db from "./config";
 import {doc , setDoc, getDoc} from "firebase/firestore";
 
-const addItemToInventory = async (item) => {
-    const uid = getUID();
+const addItemToInventory = async (uid,item) => {
+    // const uid = getUID();
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
 
@@ -17,8 +17,8 @@ const addItemToInventory = async (item) => {
     }
 }
 
-const getInventory = async () => {
-    const uid = getUID();
+const getInventory = async (uid) => {
+    // const uid = getUID();
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
 
@@ -29,11 +29,11 @@ const getInventory = async () => {
     }
 }
 
-const updateItemInInventory = async (oldItem, newItem) => {
-    const uid = getUID();
+const updateItemInInventory = async (uid, oldItem, newItem) => {
+    // const uid = getUID();
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
-
+    console.log(docSnap);
     if(docSnap.exists()){
         const newItems = docSnap.data().items.map(i => i === oldItem ? newItem : i);
         await setDoc(docRef, {
@@ -42,22 +42,24 @@ const updateItemInInventory = async (oldItem, newItem) => {
     }
 }
 
-const deleteItemFromInventory = async (item) => {
-    const uid = getUID();
+const deleteItemFromInventory = async (uid,item) => {
+    console.log(uid,item);
+    // const uid = getUID();
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
+    // console.log(docSnap);
 
     if(docSnap.exists()){
-        const newItems = docSnap.data().items.filter(i => i !== item);
-        await setDoc(docRef, {
-            items: newItems
-        })
+        console.log("doc items=====================")
+        console.log(docSnap.data().items);
+        const newItems = docSnap.data().items.filter((i) => i !== item);
+        console.log(newItems);
+        await setDoc(docRef, {items: newItems})
     }
 }
 
 const getUID = () => {
     // add logic for auth
-
     return "123";
 }
 

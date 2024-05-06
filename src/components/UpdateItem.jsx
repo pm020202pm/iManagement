@@ -1,20 +1,21 @@
 import React, { useState, useRef } from 'react';
-import './CreateItem.css';
+import './UpdateItem.css';
+import { updateItemInInventory } from '../firebase/utils';
 
-const CreateItemModal = ({ oldItem, onClose, createItem}) => {
-  const [productName, setProductName] = useState('');
+const UpdateItemModal = ({ onClose, oldItem,uid, updateItem}) => {
+  const [productName, setProductName] = useState(oldItem.Name);
   const [selectedType, setSelectedType] = useState(0);
-  const [purpose, setPurpose] = useState('');
+  const [purpose, setPurpose] = useState(oldItem.Purpose);
   const [selectedFunctionality, setSelectedFunctionality] = useState(0);
-  const [quantityPossessed, setQuantityPossessed] = useState('');
-  const [currentLocation, setCurrentLocation] = useState('');
-  const [remarks, setRemarks] = useState('');
-  const [clubTenure, setClubTenure] = useState('');
-  const [linkToSGForm, setLinkToSGForm] = useState('');
-  const [orderedBy, setOrderedBy] = useState('');
-  const [linkToProduct, setLinkToProduct] = useState('');
-  const [invoiceFolderLink, setInvoiceFolderLink] = useState('');
-  const [totalPrice, setTotalPrice] = useState('');
+  const [quantityPossessed, setQuantityPossessed] = useState(oldItem.QuantityPossessed);
+  const [currentLocation, setCurrentLocation] = useState(oldItem.CurrentLocation);
+  const [remarks, setRemarks] = useState(oldItem.Remarks);
+  const [clubTenure, setClubTenure] = useState(oldItem.ClubTenure);
+  const [linkToSGForm, setLinkToSGForm] = useState(oldItem.LinkToSGForm);
+  const [orderedBy, setOrderedBy] = useState( oldItem.OrderedBy);
+  const [linkToProduct, setLinkToProduct] = useState(oldItem.LinktoProduct);
+  const [invoiceFolderLink, setInvoiceFolderLink] = useState( oldItem.InvoiceFolderLink);
+  const [totalPrice, setTotalPrice] = useState(oldItem.TotalPrice);
 
   const type= ["Inventory", "Consumable", "Written Off","Check Remarks"];
   const functionality= ["Working/OK", "Missing", "Damaged", "Check Remarks"];
@@ -36,7 +37,7 @@ const CreateItemModal = ({ oldItem, onClose, createItem}) => {
     "TotalPrice": totalPrice,
     "OrderedDate": new Date(Date.now()).getDate() + " " + months[new Date(Date.now()).getMonth()] + " " + new Date(Date.now()).getFullYear()  ,
   };
-  
+
   
   return (
     <div className="modal">
@@ -79,7 +80,7 @@ const CreateItemModal = ({ oldItem, onClose, createItem}) => {
         
         <div className="modal-actions">
           {
-            productName === '' || purpose === '' || quantityPossessed === '' || orderedBy === '' || linkToProduct === '' || totalPrice === '' ? null : <button className="create-item-btn" onClick={()=>createItem(newItem)}>Done</button>
+            productName === '' || purpose === '' || quantityPossessed === '' || orderedBy === '' || linkToProduct === '' || totalPrice === '' ? null : <button className="create-item-btn" onClick={()=>updateItem(uid,oldItem, newItem)}>Done</button>
           }
           <button className="cancel-btn" onClick={onClose}>Cancel</button>
         </div>
@@ -88,4 +89,4 @@ const CreateItemModal = ({ oldItem, onClose, createItem}) => {
   );
 };
 
-export default CreateItemModal;
+export default UpdateItemModal;
