@@ -43,8 +43,8 @@ const Card = ({ item }) => {
                 :
                 (
 
-                    <div className='card-expanded' onClick={() => toggleExpand()}>
-                        <div className="card">
+                    <div className='card-expanded'>
+                        <div className="card" onClick={() => toggleExpand()}>
                             <div className="col1">
                                 <div className="text1">{item.name}</div>
                             </div>

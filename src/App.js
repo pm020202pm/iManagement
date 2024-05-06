@@ -23,8 +23,8 @@ function App() {
           <div className="groups">
             <Item name="Dashboard" onClick={()=>setIndex(0)} />
             <Item name="Inventory" onClick={()=>setIndex(1)}/>
-            <Item name="Feedback" />
-            <Item name="About" />{" "}
+            <Item name="Feedback" onClick={()=>setIndex(2)}/>
+            <Item name="About" onClick={()=>setIndex(3)}/>
           </div>
       </motion.div>
       <div className="body_container">{tabs[index]}</div>
