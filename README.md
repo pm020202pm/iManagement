@@ -26,9 +26,13 @@ This is a React web application that requires setting up Firebase and installing
     - Copy the Firebase configuration object
 
 3. **Install dependencies**
+
+    ```bash
     npm install
 
 4. **Start the development server**
+
+    ```bash
     npm start
 
 
