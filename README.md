@@ -15,8 +15,8 @@ This is a React web application that requires setting up Firebase and installing
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/Web-Division-IITK/Inventory-Management
+   cd Inventory-Management
 
 
 2. **Set up Firebase**
