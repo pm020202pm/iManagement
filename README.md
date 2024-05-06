@@ -18,7 +18,6 @@ This is a React web application that requires setting up Firebase and installing
    git clone https://github.com/Web-Division-IITK/Inventory-Management
    cd Inventory-Management
 
-
 2. **Set up Firebase**
     - Go to the Firebase Console and create a new project or use an existing one
     - In the project overview, click on "Web" to get the configuration object
@@ -34,6 +33,3 @@ This is a React web application that requires setting up Firebase and installing
 
     ```bash
     npm start
-
-
-
