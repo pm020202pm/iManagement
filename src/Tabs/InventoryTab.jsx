@@ -14,6 +14,7 @@ const InventoryTab = () => {
   useEffect(() => {
     const initData = async () => {
       const inventory = await getInventory(Clubs[selectedOption]);
+      console.log(inventory)
       setData(inventory);
     }
     initData();
@@ -54,7 +55,6 @@ const InventoryTab = () => {
       {data.length !==0 && data.map((item, index) => (
         <Card 
         key={index} 
-        uid={selectedOption}
         item={item} 
         uid={Clubs[selectedOption]}
         deleteItem={() => deleteItem(Clubs[selectedOption], item)}

@@ -50,10 +50,16 @@ const deleteItemFromInventory = async (uid,item) => {
     // console.log(docSnap);
 
     if(docSnap.exists()){
-        console.log("doc items=====================")
-        console.log(docSnap.data().items);
-        const newItems = docSnap.data().items.filter((i) => i !== item);
-        console.log(newItems);
+        const newItems = docSnap.data().items.filter((i) => {
+            // compare every feild of i to item
+            for (let key in i) {
+                if(i[key] !== item[key]){
+                    return true;
+                }
+            }
+
+            return false;
+        });
         await setDoc(docRef, {items: newItems})
     }
 }
