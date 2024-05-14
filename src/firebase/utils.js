@@ -1,5 +1,5 @@
 import db from "./config";
-import {doc , setDoc, getDoc} from "firebase/firestore";
+import {doc , setDoc, getDoc, arrayUnion, updateDoc, arrayRemove} from "firebase/firestore";
 
 const addItemToInventory = async (uid,item) => {
     // const uid = getUID();
@@ -18,7 +18,7 @@ const addItemToInventory = async (uid,item) => {
 }
 
 const getInventory = async (uid) => {
-    // const uid = getUID();
+    console.log("uid:", uid);
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
 
@@ -30,34 +30,30 @@ const getInventory = async (uid) => {
 }
 
 const updateItemInInventory = async (uid, oldItem, newItem) => {
-    // const uid = getUID();
+    console.log("oldItem:", oldItem);
+    console.log("newItem:", newItem);
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap);
-    if(docSnap.exists()){
-        const newItems = docSnap.data().items.map(i => i === oldItem ? newItem : i);
-        await setDoc(docRef, {
-            items: newItems
-        })
+    if (docSnap.exists()) {
+        await updateDoc(docRef, {
+          items: arrayRemove(oldItem),
+        });
+        await updateDoc(docRef, {
+          items: arrayUnion(newItem),
+        });
     }
 }
 
 const deleteItemFromInventory = async (uid,item) => {
-    console.log(uid,item);
-    // const uid = getUID();
     const docRef = doc(db, "inventory", uid);
     const docSnap = await getDoc(docRef);
-    // console.log(docSnap);
-
     if(docSnap.exists()){
         const newItems = docSnap.data().items.filter((i) => {
-            // compare every feild of i to item
             for (let key in i) {
                 if(i[key] !== item[key]){
                     return true;
                 }
             }
-
             return false;
         });
         await setDoc(docRef, {items: newItems})
