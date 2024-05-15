@@ -3,16 +3,16 @@ import './UpdateItem.css';
 const UpdateItemModal = ({ onClose, oldItem, createItem, updateItem, isUpdating}) => {
   const [productName, setProductName] = useState(isUpdating ? oldItem.Name : '');
   const [selectedType, setSelectedType] = useState(isUpdating ? oldItem.Type : "Inventory");
-  const [purpose, setPurpose] = useState(isUpdating ? oldItem.Purpose : '');
+  const [purpose, setPurpose] = useState(isUpdating ? oldItem.Purpose : '--');
   const [selectedFunctionality, setSelectedFunctionality] = useState(isUpdating? oldItem.Functionality : "Working/OK");
   const [quantityPossessed, setQuantityPossessed] = useState(isUpdating ? oldItem.QuantityPossessed : '');
   const [currentLocation, setCurrentLocation] = useState(isUpdating ? oldItem.CurrentLocation : '');
-  const [remarks, setRemarks] = useState(isUpdating ? oldItem.Remarks : '');
-  const [clubTenure, setClubTenure] = useState(isUpdating ? oldItem.ClubTenure : '');
-  const [linkToSGForm, setLinkToSGForm] = useState(isUpdating ? oldItem.LinkToSGForm : '');
+  const [remarks, setRemarks] = useState(isUpdating ? oldItem.Remarks : '--');
+  const [clubTenure, setClubTenure] = useState(isUpdating ? oldItem.ClubTenure : '--');
+  const [linkToSGForm, setLinkToSGForm] = useState(isUpdating ? oldItem.LinkToSGForm : '--');
   const [orderedBy, setOrderedBy] = useState(isUpdating ? oldItem.OrderedBy : '');
-  const [linkToProduct, setLinkToProduct] = useState(isUpdating ? oldItem.LinktoProduct : '');
-  const [invoiceFolderLink, setInvoiceFolderLink] = useState(isUpdating ? oldItem.InvoiceFolderLink : '');
+  const [linkToProduct, setLinkToProduct] = useState(isUpdating ? oldItem.LinktoProduct : '--');
+  const [invoiceFolderLink, setInvoiceFolderLink] = useState(isUpdating ? oldItem.InvoiceFolderLink : '--');
   const [totalPrice, setTotalPrice] = useState(isUpdating ? oldItem.TotalPrice : '');
 
   const type= ["Inventory", "Consumable", "Written Off","Check Remarks"];
@@ -41,159 +41,36 @@ const UpdateItemModal = ({ onClose, oldItem, createItem, updateItem, isUpdating}
     <div className="modal-content">
       <h2>{isUpdating ? 'Update Item' : 'Add Item'}</h2>
       <form>
-        <div className="form-group">
-          <label htmlFor="productName">Name</label>
-          <input
-            type="text"
-            id="productName"
-            value={productName}
-            onChange={(e) => setProductName(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="purpose">Purpose</label>
-          <input
-            type="text"
-            id="purpose"
-            value={purpose}
-            onChange={(e) => setPurpose(e.target.value)}
-          />
+        <TextFields label="Name" value={productName} onChange={setProductName}/>
+        <TextFields label="Purpose" value={purpose} onChange={setPurpose}/> 
+        <div className="form-row">
+          <TextFields type="number" label="Quantity Possessed" value={quantityPossessed} onChange={setQuantityPossessed}/>
+          <TextFields label="Current Location" value={currentLocation} onChange={setCurrentLocation}/>
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="quantityPossessed">Quantity Possessed</label>
-            <input
-              type="number"
-              id="quantityPossessed"
-              value={quantityPossessed}
-              onChange={(e) => setQuantityPossessed(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="currentLocation">Current Location</label>
-            <input
-              type="text"
-              id="currentLocation"
-              value={currentLocation}
-              onChange={(e) => setCurrentLocation(e.target.value)}
-            />
-          </div>
+          <TextFields label="Ordered By" value={orderedBy} onChange={setOrderedBy}/>
+          <TextFields label="Link to Product" value={linkToProduct} onChange={setLinkToProduct}/>
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="orderedBy">Ordered By</label>
-            <input
-              type="text"
-              id="orderedBy"
-              value={orderedBy}
-              onChange={(e) => setOrderedBy(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="linkToProduct">Link to Product</label>
-            <input
-              type="text"
-              id="linkToProduct"
-              value={linkToProduct}
-              onChange={(e) => setLinkToProduct(e.target.value)}
-            />
-          </div>
+          <TextFields label="Remarks" value={remarks} onChange={setRemarks}/>
+          <TextFields label="Club Tenure" value={clubTenure} onChange={setClubTenure}/>
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="remarks">Remarks</label>
-            <input
-              type="text"
-              id="remarks"
-              value={remarks}
-              onChange={(e) => setRemarks(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="clubTenure">Club Tenure</label>
-            <input
-              type="text"
-              id="clubTenure"
-              value={clubTenure}
-              onChange={(e) => setClubTenure(e.target.value)}
-            />
-          </div>
+          <TextFields label="Link to SG Form" value={linkToSGForm} onChange={setLinkToSGForm}/>
+          <TextFields label="Invoice Folder Link" value={invoiceFolderLink} onChange={setInvoiceFolderLink}/>
         </div>
         <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="linkToSGForm">Link to SG Form</label>
-            <input
-              type="text"
-              id="linkToSGForm"
-              value={linkToSGForm}
-              onChange={(e) => setLinkToSGForm(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="invoiceFolderLink">Invoice Folder Link</label>
-            <input
-              type="text"
-              id="invoiceFolderLink"
-              value={invoiceFolderLink}
-              onChange={(e) => setInvoiceFolderLink(e.target.value)}
-            />
-          </div>
-        </div>
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="totalPrice">Total Price</label>
-            <input
-              type="number"
-              id="totalPrice"
-              value={totalPrice}
-              onChange={(e) => setTotalPrice(e.target.value)}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="type">Type</label>
-            <select
-              id="type"
-              value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
-            >
-              {type.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="functionality">Functionality</label>
-            <select id="functionality" value={selectedFunctionality} onChange={(e) => setSelectedFunctionality(e.target.value)}
-            >
-              {functionality.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
+          <TextFields type="number" label="Total Price" value={totalPrice} onChange={setTotalPrice}/>
+          <SelectFields label="Type" value={selectedType} onChange={setSelectedType} options={type}/>
+          <SelectFields label="Functionality" value={selectedFunctionality} onChange={setSelectedFunctionality} options={functionality}/>
         </div>
         <div className="modal-actions">
           {isUpdating ? (
-            <button
-              className="create-item-btn"
-              onClick={() => updateItem(oldItem, newItem)}
-            >
-              Update
-            </button>
+            <button className="create-item-btn" onClick={() => updateItem(oldItem, newItem)}>Update</button>
           ) : (
-            <button
-              className="create-item-btn"
-              onClick={() => createItem(newItem)}
-            >
-              Create
-            </button>
+            <button className="create-item-btn" onClick={() => createItem(newItem)}>Create</button>
           )}
-          <button className="cancel-btn" onClick={onClose}>
-            Cancel
-          </button>
+          <button className="cancel-btn" onClick={onClose}>Cancel</button>
         </div>
       </form>
     </div>
@@ -202,3 +79,37 @@ const UpdateItemModal = ({ onClose, oldItem, createItem, updateItem, isUpdating}
 };
 
 export default UpdateItemModal;
+
+export const TextFields = ({type, label, value, onChange}) => {
+  
+  return (
+    <div className="form-group">
+      <label htmlFor={label}>{label}</label>
+      <input
+        type={type || "text"}
+        id={label}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
+  );
+}
+
+export const SelectFields = ({label, value, onChange, options}) => {
+  return (
+    <div className="form-group">
+      <label htmlFor={label}>{label}</label>
+      <select
+        id={label}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      >
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}

@@ -13,7 +13,7 @@ const Card = ({ item, updateItem, deleteItem}) => {
         <LabelText1 label="Ordered Date" value={item.OrderedDate}/>
         <LabelText1 label="Quantity Possessed" value={item.QuantityPossessed}/>
         <LabelText1 label="Current Location" value={item.CurrentLocation}/>
-        <LabelText1 label="Total Price" value={item.TotalPrice}/>
+        <LabelText1 label="Total Price" value={"₹ "+item.TotalPrice}/>
         </div>
     ) : (
       <div className='card-expanded'>
@@ -22,7 +22,7 @@ const Card = ({ item, updateItem, deleteItem}) => {
         <LabelText1 label="Ordered Date" value={item.OrderedDate}/>
         <LabelText1 label="Quantity Possessed" value={item.QuantityPossessed}/>
         <LabelText1 label="Current Location" value={item.CurrentLocation}/>
-        <LabelText1 label="Total Price" value={item.TotalPrice}/>
+        <LabelText1 label="Total Price" value={"₹ "+item.TotalPrice}/>
       </div>
         <div className="col5">
             <LabelText2 label="Ordered By" value={item.OrderedBy}/>

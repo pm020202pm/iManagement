@@ -5,42 +5,38 @@ import { TipsAndUpdates } from '@mui/icons-material';
 const DashboardStats = () => {
     return (
         <div className='dashboard'>
-                <div class="app-box">
-                    <div class="app-icon">{<TipsAndUpdates />}</div>
-                    <div class="app-text">
-                        <span class="app-count">410</span>
-                        <span class="app-label">Active Applications</span>
-                    </div>
-                </div>
-                <div class="app-box">
-                    <div class="app-icon">{<TipsAndUpdates/>}</div>
-                    <div class="app-text">
-                        <span class="app-count">2772</span>
-                        <span class="app-label">Updates</span>
-                    </div>
-                </div>
-                
-                <div class="days-text">
-                        <span class="label1">Total Ordered</span>
-                        <span class="label2">29</span>
-                </div>
-                <div className="vline"></div>
-                <span className="days-widget">
-                <div class="days-text">
-                        <span class="label1">Total Processed</span>
-                        <span class="label2">20</span>
-                    </div>
-                </span>
-                <div className="vline"></div>
-                <span className="days-widget">
-                <div class="days-text">
-                        <span class="label1">Total Price</span>
-                        <span class="label2">₹ 2000</span>
-                    </div>
-                </span>
-        
+            <IconTextBox icon={<TipsAndUpdates />} count={410} label="Active Applications"/>
+            <IconTextBox icon={<TipsAndUpdates />} count={2772} label="Updates"/>
+            <LabelText3 label="Total Ordered" value={29}/>
+            <div className="vline"></div>
+            <LabelText3 label="Total Processed" value={20}/>
+            <div className="vline"></div>
+            <LabelText3 label="Total Delivered" value={10}/>
         </div>
     );
 };
 
 export default DashboardStats;
+
+export const IconTextBox = ({icon, count, label}) => {
+    return (
+        <div class="app-box">
+            <div class="app-icon">{icon}</div>
+            <div class="app-text">
+                <span class="app-count">{count}</span>
+                <span class="app-label">{label}</span>
+            </div>
+        </div>
+    )
+}
+
+export const LabelText3 = ({label, value}) => {
+    return (
+        <>
+        <div className="days-text">
+            <div className="label1">{label}</div>
+            <div className="label2">{value}</div>
+        </div>
+        </>
+    )
+}
